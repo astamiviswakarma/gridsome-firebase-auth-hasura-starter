@@ -1,0 +1,16 @@
+{
+  "name": "gridsome-firebase-auth-hasura-starter",
+  "private": true,
+  "scripts": {
+    "build": "gridsome build",
+    "develop": "gridsome develop",
+    "explore": "gridsome explore"
+  },
+  "dependencies": {
+    "gridsome": "^0.7.0"
+  },
+  "devDependencies": {
+    "firebase": "^9.6.4",
+    "vuex": "^3.6.2"
+  }
+}
