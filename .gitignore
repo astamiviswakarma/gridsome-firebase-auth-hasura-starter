@@ -106,6 +106,8 @@ dist
 .DS_Store
 
 src/.temp
+src/sdk
+graphql.schema.json
 
 .env
 .env.*

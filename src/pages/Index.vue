@@ -9,6 +9,14 @@
     <p>
       Lorem ipsum dolor sit amet, consectetur adipisicing elit. Pariatur excepturi labore tempore expedita, et iste tenetur suscipit explicabo! Dolores, aperiam non officia eos quod asperiores
     </p>
+    <div v-if="$page.hasura.article.length">
+	    <div class="articles" v-for="article in $page.hasura.article" :key="article.id">
+	      <p>{{ article.title }} by {{ article.body }}</p>
+	    </div>
+    </div>
+    <div v-else>
+      <p>No articles found</p>
+    </div>
 
     <p class="home-links">
       <a href="https://gridsome.org/docs/" target="_blank" rel="noopener">Gridsome Docs</a>
@@ -17,6 +25,18 @@
 
   </Layout>
 </template>
+
+<page-query>
+query {
+  hasura {
+    article {
+      id
+      title
+      body
+    }
+  }
+}
+</page-query>
 
 <script>
 export default {

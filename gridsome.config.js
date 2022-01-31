@@ -6,5 +6,14 @@
 
 module.exports = {
   siteName: 'Gridsome',
-  plugins: []
+  plugins: [{
+    use: '@gridsome/source-graphql',
+    options: {
+      url: 'http://localhost:8080/v1/graphql',
+      fieldName: 'hasura',
+      headers: {
+        // Authorization: `Bearer ${process.env.AUTH_TOKEN}`,
+      },
+    },
+  }]
 }

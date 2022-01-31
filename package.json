@@ -4,13 +4,23 @@
   "scripts": {
     "build": "gridsome build",
     "develop": "gridsome develop",
-    "explore": "gridsome explore"
+    "explore": "gridsome explore",
+    "generate": "graphql-codegen --config codegen.yml"
   },
   "dependencies": {
     "gridsome": "^0.7.0"
   },
   "devDependencies": {
+    "@graphql-codegen/cli": "2.4.0",
+    "@graphql-codegen/introspection": "2.1.1",
+    "@graphql-codegen/typescript": "2.4.2",
+    "@graphql-codegen/typescript-graphql-files-modules": "2.1.1",
+    "@graphql-codegen/typescript-graphql-request": "^4.3.3",
+    "@graphql-codegen/typescript-operations": "2.2.2",
+    "@gridsome/source-graphql": "^0.1.0",
     "firebase": "^9.6.4",
+    "graphql": "^15.0.0",
+    "typescript": ">=2.7",
     "vuex": "^3.6.2"
   }
 }
