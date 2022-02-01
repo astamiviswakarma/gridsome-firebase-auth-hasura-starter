@@ -7,6 +7,9 @@
 module.exports = {
   siteName: 'Gridsome',
   plugins: [{
+    use: 'gridsome-plugin-typescript',
+  },
+  {
     use: '@gridsome/source-graphql',
     options: {
       url: 'http://localhost:8080/v1/graphql',

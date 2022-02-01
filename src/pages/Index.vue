@@ -9,8 +9,8 @@
     <p>
       Lorem ipsum dolor sit amet, consectetur adipisicing elit. Pariatur excepturi labore tempore expedita, et iste tenetur suscipit explicabo! Dolores, aperiam non officia eos quod asperiores
     </p>
-    <div v-if="$page.hasura.article.length">
-	    <div class="articles" v-for="article in $page.hasura.article" :key="article.id">
+    <div v-if="articles && articles.length">
+	    <div class="articles" v-for="article in articles" :key="article.id">
 	      <p>{{ article.title }} by {{ article.body }}</p>
 	    </div>
     </div>
@@ -39,9 +39,38 @@ query {
 </page-query>
 
 <script>
+import { GraphQLClient } from 'graphql-request';
+import { getSdk } from '@/sdk/graphql.ts';
+
 export default {
   metaInfo: {
     title: 'Hello, world!'
+  },
+  data() {
+    return {
+      loading:false,
+      articles: null,
+      error: null
+    }
+  },
+  mounted() {
+    this.fetchData();
+  },
+  methods: {
+    async fetchData() {
+      this.error = this.articles = null
+      this.loading = true
+      try {
+        const client = new GraphQLClient('http://localhost:8080/v1/graphql')
+        const sdk = getSdk(client);
+        const { article } = await sdk.getArticles() // This is fully typed, based on the query
+        this.articles = article;
+      } catch (e) {
+        this.error = e.getMessage();
+      } finally {
+        this.loading = false;
+      }
+    }
   }
 }
 </script>
